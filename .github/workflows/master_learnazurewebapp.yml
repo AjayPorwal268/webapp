@@ -6,7 +6,7 @@ name: Build and deploy Node.js app to Azure Web App - learnazurewebapp
 on:
   push:
     branches:
-      - master
+      - deploymentslot2
   workflow_dispatch:
 
 jobs:
@@ -69,6 +69,7 @@ jobs:
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'learnazurewebapp'
-          slot-name: 'Production'
+          slot-name: 'deploymentslot2'
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_SLOT2 }}
           package: .
           
